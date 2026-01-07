@@ -14,11 +14,11 @@ const Contact: React.FC = () => {
         <div className="glass border-white/10 rounded-[2.5rem] p-8 md:p-16 flex flex-col lg:flex-row gap-16 overflow-hidden relative shadow-2xl">
           {/* Subtle light leak effect */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 blur-[100px] pointer-events-none" />
-          
+
           <div className="flex-1 space-y-8">
             <div>
               <h2 className="text-sm font-mono tracking-widest text-sky-400 uppercase mb-4">Contact Us</h2>
-              <h3 className="text-5xl font-bold text-white tracking-tight mb-6">
+              <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
                 Ready to evolve?
               </h3>
               <p className="text-xl text-slate-400 leading-relaxed max-w-lg">
@@ -27,9 +27,9 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="space-y-6">
-              <a 
-                href={whatsappLink} 
-                target="_blank" 
+              <a
+                href={whatsappLink}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-5 rounded-2xl glass hover:bg-sky-500/10 border-white/5 transition-all duration-300"
               >
@@ -42,16 +42,16 @@ const Contact: React.FC = () => {
                 </div>
               </a>
 
-              <a 
+              <a
                 href={`mailto:${email}`}
-                className="group flex items-center gap-4 p-5 rounded-2xl glass hover:bg-sky-500/10 border-white/5 transition-all duration-300"
+                className="group flex items-center gap-4 p-4 md:p-5 rounded-2xl glass hover:bg-sky-500/10 border-white/5 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-full bg-sky-500/20 flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform">
-                  <Mail className="w-6 h-6" />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-sky-500/20 flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform flex-shrink-0">
+                  <Mail className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs text-slate-500 font-mono uppercase tracking-widest mb-1">Email</p>
-                  <p className="text-lg font-semibold text-white group-hover:text-sky-400 transition-colors">{email}</p>
+                  <p className="text-sm md:text-lg font-semibold text-white group-hover:text-sky-400 transition-colors break-all">{email}</p>
                 </div>
               </a>
             </div>
@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
                 Businesses that embrace AI today set the pace for their industry tomorrow. We help you lead that charge.
               </p>
             </div>
-            
+
             <div className="mt-12 space-y-4">
               <div className="flex items-center gap-3 text-slate-300">
                 <div className="w-1.5 h-1.5 rounded-full bg-sky-500" />

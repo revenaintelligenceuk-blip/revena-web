@@ -29,25 +29,25 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Main Brand Header */}
-        <div className="space-y-4 mb-12 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white leading-[0.95]">
+        <div className="space-y-4 mb-8 md:mb-12 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.95]">
             Revena <br />
             <span className="text-gradient">Intelligence</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 font-medium tracking-tight max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-2xl text-slate-300 font-medium tracking-tight max-w-2xl mx-auto px-2">
             We are intelligence that helps businesses grow with AI.
           </p>
         </div>
 
         {/* Central Hero Visual (The Logo) */}
-        <div 
+        <div
           onClick={handleLogoClick}
-          className={`relative mb-16 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] select-none animate-fade-in-up ${isJumping ? 'animate-logo-jump' : 'hover:scale-105 active:scale-95'}`}
+          className={`relative mb-10 md:mb-16 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] select-none animate-fade-in-up ${isJumping ? 'animate-logo-jump' : 'hover:scale-105 active:scale-95'}`}
           style={{ animationDelay: '0.2s' }}
         >
           {/* Internal Glow */}
           <div className="absolute inset-0 bg-sky-400/10 blur-3xl rounded-full scale-150 opacity-50 group-hover:opacity-100 transition-opacity" />
-          <Logo className="h-40 md:h-56 lg:h-64" showText={false} />
+          <Logo className="h-28 sm:h-36 md:h-48 lg:h-56" showText={false} />
         </div>
 
         {/* Mission Statement Callout */}
