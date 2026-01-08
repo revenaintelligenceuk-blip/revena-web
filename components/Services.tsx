@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Cpu, Globe, Zap, Network } from 'lucide-react';
+import { Cpu, Globe, Zap, Network, Workflow } from 'lucide-react';
 
 const services = [
   {
@@ -26,6 +26,12 @@ const services = [
     desc: "High-performance, AI-driven web experiences designed for conversions and premium brand positioning.",
     icon: Globe,
     color: "from-cyan-400 to-sky-500"
+  },
+  {
+    title: "AI Workflows",
+    desc: "Streamline operations with intelligent, automated decision paths that optimize efficiency and reduce manual oversight.",
+    icon: Workflow,
+    color: "from-violet-600 to-indigo-600"
   }
 ];
 
@@ -43,8 +49,8 @@ const Services: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="group glass p-8 rounded-2xl hover:bg-white/[0.05] transition-all duration-500 hover:-translate-y-2 border-white/5"
             >
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center mb-6 shadow-lg shadow-sky-500/10`}>
