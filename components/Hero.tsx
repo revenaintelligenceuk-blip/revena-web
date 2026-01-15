@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-20 px-6 overflow-hidden">
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-14 px-6 overflow-hidden">
       {/* Background Atmosphere */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl pointer-events-none">
         <div className="absolute inset-0 bg-sky-500/5 blur-[160px] rounded-full animate-pulse" style={{ animationDuration: '8s' }} />
@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Main Brand Header */}
-        <div className="space-y-4 mb-8 md:mb-12 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <div className="space-y-4 mb-4 md:mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.95]">
             Revena <br />
             <span className="text-gradient">Intelligence</span>
