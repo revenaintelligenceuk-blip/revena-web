@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
         {/* Central Hero Visual (The Logo) */}
         <div
           onClick={handleLogoClick}
-          className={`relative mb-10 md:mb-16 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] select-none animate-fade-in-up ${isJumping ? 'animate-logo-jump' : 'hover:scale-105 active:scale-95'}`}
+          className={`relative mb-6 md:mb-8 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] select-none animate-fade-in-up ${isJumping ? 'animate-logo-jump' : 'hover:scale-105 active:scale-95'}`}
           style={{ animationDelay: '0.2s' }}
         >
           {/* Internal Glow */}
@@ -53,8 +53,8 @@ const Hero: React.FC = () => {
         {/* Mission Statement Callout */}
         <div className="max-w-2xl mx-auto space-y-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <div className="h-px w-12 bg-sky-500/50 mx-auto" />
-          <p className="text-lg md:text-xl text-slate-400 leading-relaxed font-light italic">
-            Revena Intelligence is an advanced automation and integration partner. We specialize in architecting bespoke AI ecosystems that replace manual complexity with autonomous efficiency, allowing businesses to scale at unprecedented speeds through the power of intelligent systems.
+          <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-light italic">
+            Revena Intelligence is an advanced automation and integration partner. We architect bespoke AI ecosystems that replace manual complexity with autonomous efficiency, empowering businesses to scale at unprecedented speeds.
           </p>
         </div>
       </div>
