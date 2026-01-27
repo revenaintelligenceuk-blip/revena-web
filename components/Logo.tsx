@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 interface LogoProps {
   className?: string;
@@ -8,6 +8,17 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ className = "h-8", showText = true }) => {
   const [isHovered, setIsHovered] = useState(false);
+  // Avoid regenerating random particle positions on every render (can cause jank).
+  const particles = useMemo(
+    () =>
+      [...Array(6)].map((_, i) => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${i * 0.4}s`,
+        animationDuration: `${3 + i * 0.5}s`,
+      })),
+    []
+  );
 
   return (
     <div 
@@ -22,15 +33,15 @@ const Logo: React.FC<LogoProps> = ({ className = "h-8", showText = true }) => {
         
         {/* Soft Particle Effect */}
         <div className={`absolute inset-0 z-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-          {[...Array(6)].map((_, i) => (
+          {particles.map((p, i) => (
             <div 
               key={i}
               className={`absolute w-1 h-1 bg-sky-300/60 rounded-full animate-float-particle`}
               style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${i * 0.4}s`,
-                animationDuration: `${3 + i * 0.5}s`
+                top: p.top,
+                left: p.left,
+                animationDelay: p.animationDelay,
+                animationDuration: p.animationDuration
               }}
             />
           ))}

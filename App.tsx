@@ -15,13 +15,34 @@ import Settings from './components/Settings';
 export type View = 'home' | 'dashboard' | 'settings';
 
 const App: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
   const [currentView, setCurrentView] = useState<View>('home');
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Mobile perf: avoid re-rendering on every scroll tick.
+    // We only care if we've crossed the "scrolled" threshold for the header.
+    let rafId: number | null = null;
+    const threshold = 50;
+
+    const update = () => {
+      rafId = null;
+      const next = window.scrollY > threshold;
+      setIsHeaderScrolled(prev => (prev === next ? prev : next));
+    };
+
+    const onScroll = () => {
+      if (rafId != null) return;
+      rafId = window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Initialize
+    update();
+
+    return () => {
+      if (rafId != null) window.cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   // Scroll to top when view changes
@@ -32,13 +53,13 @@ const App: React.FC = () => {
   return (
     <div className="relative min-h-screen selection:bg-sky-500/30">
       {/* Background Dotted Grid */}
-      <div className="fixed inset-0 grid-pattern pointer-events-none z-0 opacity-40" />
+      <div className="fixed inset-0 grid-pattern bg-grid pointer-events-none z-0 opacity-40" />
       
       {/* Dynamic Background Glows */}
-      <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-sky-900/20 blur-[120px] rounded-full pointer-events-none z-0" />
-      <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-900/20 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-sky-900/20 blur-[120px] rounded-full pointer-events-none z-0 bg-glow bg-glow--tl" />
+      <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-900/20 blur-[120px] rounded-full pointer-events-none z-0 bg-glow bg-glow--br" />
 
-      <Header scrolled={scrollY > 50} currentView={currentView} setView={setCurrentView} />
+      <Header scrolled={isHeaderScrolled} currentView={currentView} setView={setCurrentView} />
 
       <main className="relative z-10">
         {currentView === 'home' && (

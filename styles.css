@@ -41,6 +41,37 @@ input[type="button"],
     background-size: 32px 32px;
 }
 
+/* Mobile performance tweaks */
+@media (max-width: 768px) {
+    /* Fixed, large blurs are expensive on mobile GPUs */
+    .bg-glow {
+        opacity: 0.18 !important;
+        filter: blur(60px) !important;
+    }
+
+    .bg-grid {
+        opacity: 0.22 !important;
+    }
+
+    /* Reduce global motion on mobile */
+    .animate-fade-in-up,
+    .animate-logo-jump,
+    .animate-float-particle {
+        animation-duration: 0.6s !important;
+    }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 /* Selection State */
 ::selection {
     background: rgba(56, 189, 248, 0.3);
