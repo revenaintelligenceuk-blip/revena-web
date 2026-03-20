@@ -218,7 +218,7 @@ export default function App() {
                 </div>
               </div>
               
-              <h1 className="text-8xl md:text-9xl font-serif font-bold tracking-tight leading-[0.9] text-navy relative">
+              <h1 className="text-5xl sm:text-7xl lg:text-9xl font-serif font-bold tracking-tight leading-[0.9] text-navy relative">
                 Eliminate <br />
                 <span className="italic font-normal text-gradient">Revenue Leakage.</span>
                 <motion.div 
@@ -229,7 +229,7 @@ export default function App() {
                 />
               </h1>
               
-              <p className="text-2xl md:text-3xl text-grey-body max-w-3xl leading-relaxed font-sans font-light tracking-tight">
+              <p className="text-lg md:text-2xl lg:text-3xl text-grey-body max-w-3xl leading-relaxed font-sans font-light tracking-tight">
                 Most service businesses lose 20–45% of inbound revenue due to missed calls, slow response times, and broken follow-up systems. <span className="text-navy font-semibold border-b border-copper/30">RVNA</span> builds intelligent systems that recover it.
               </p>
               
@@ -278,7 +278,7 @@ export default function App() {
             <div className="space-y-12">
               <div className="space-y-6">
                 <div className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-navy/30">The Challenge</div>
-                <h2 className="text-5xl md:text-6xl font-serif font-bold tracking-tight leading-tight relative">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight relative">
                   The Cost of <br /> Operational Friction.
                   <div className="absolute -left-12 top-6 w-1 h-1 bg-copper/40 rounded-full hidden lg:block" />
                 </h2>
@@ -323,7 +323,7 @@ export default function App() {
         <Section id="framework">
           <div className="text-center max-w-3xl mx-auto mb-32 space-y-8">
             <div className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-navy/30">Strategic Methodology</div>
-            <h2 className="text-6xl font-serif font-bold tracking-tight relative inline-block">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight relative inline-block">
               The <span className="italic font-normal text-gradient">RVNA Framework.</span>
               <motion.div 
                 animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
@@ -358,10 +358,11 @@ export default function App() {
             ].map((item, i) => (
               <motion.div 
                 key={i} 
-                whileHover={{ y: -10 }}
-                className="space-y-10 p-12 border border-premium bg-cream-light/40 hover:bg-cream-light shadow-premium transition-all duration-700 group relative"
+                whileHover={{ y: -12, scale: 1.02 }}
+                className="space-y-10 p-12 border border-premium bg-cream-light/40 hover:bg-white hover:border-copper/30 hover:shadow-[0_20px_50px_-12px_rgba(166,124,82,0.15)] transition-all duration-500 group relative overflow-hidden"
               >
-                <div className="text-5xl font-serif italic text-navy/5 group-hover:text-navy/10 transition-colors absolute top-8 right-12">{item.step}</div>
+                <div className="absolute inset-0 bg-gradient-to-br from-copper/0 via-copper/0 to-copper/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                <div className="text-5xl font-serif italic text-navy/5 group-hover:text-copper/10 transition-colors absolute top-8 right-12 z-10">{item.step}</div>
                 <h3 className="text-3xl font-serif font-bold tracking-tight">{item.title}</h3>
                 <p className="text-base text-grey-body leading-relaxed font-sans font-light">{item.desc}</p>
                 <ul className="space-y-4 pt-6 border-t border-navy/5">
@@ -383,7 +384,7 @@ export default function App() {
             <div className="space-y-16">
               <div className="space-y-8">
                 <div className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-cream/30">Implementation Journey</div>
-                <h2 className="text-6xl md:text-7xl font-serif font-bold tracking-tight leading-tight">
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight leading-tight">
                   From Audit to <br /> <span className="italic font-normal text-cream/80">Operational Excellence.</span>
                 </h2>
               </div>
@@ -469,7 +470,7 @@ export default function App() {
                   <div className="w-16 h-[1px] bg-navy/10" />
                   <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-navy/40">Revenue Analysis</span>
                 </div>
-                <h2 className="text-7xl md:text-8xl font-serif font-bold tracking-tight leading-[1] text-navy">
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight leading-[1] text-navy">
                   Quantifying <br />
                   <span className="italic font-normal text-gradient">the Opportunity.</span>
                 </h2>
@@ -581,7 +582,7 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-32">
             <div className="space-y-8">
               <div className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-navy/30">The Industry Standard</div>
-              <h2 className="text-5xl md:text-6xl font-serif font-bold tracking-tight leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight">
                 Why Traditional <br /> <span className="italic font-normal text-navy/60">Agencies Fail.</span>
               </h2>
             </div>
@@ -609,7 +610,7 @@ export default function App() {
                 <div className="inline-block px-5 py-1.5 rounded-full border border-navy/10 text-[9px] font-sans font-bold uppercase tracking-[0.3em] text-navy/50 bg-cream-light/50 backdrop-blur-sm">
                   Complimentary Strategic Service
                 </div>
-                <h2 className="text-6xl font-serif font-bold tracking-tight leading-tight">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight">
                   The <span className="italic font-normal text-gradient">Operational</span> <br /> Infrastructure Audit.
                 </h2>
               </div>
@@ -689,7 +690,7 @@ export default function App() {
           <div className="max-w-4xl mx-auto space-y-16">
             <div className="space-y-6">
               <div className="text-[10px] font-sans font-bold uppercase tracking-[0.6em] text-navy/30">Strategic Partnership</div>
-              <h2 className="text-7xl md:text-8xl font-serif font-bold tracking-tight leading-tight text-gradient">
+              <h2 className="text-4xl md:text-6xl lg:text-8xl font-serif font-bold tracking-tight leading-tight text-gradient">
               Request a <span className="italic font-normal">Confidential</span> <br /> Revenue Review.
             </h2>
             </div>
@@ -719,7 +720,7 @@ export default function App() {
             <div className="space-y-12">
               <div className="space-y-6">
                 <div className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-navy/30">Get in Touch</div>
-                <h2 className="text-6xl font-serif font-bold tracking-tight leading-tight">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight">
                   Book Your <br /> <span className="italic font-normal text-gradient">Discovery Call.</span>
                 </h2>
               </div>

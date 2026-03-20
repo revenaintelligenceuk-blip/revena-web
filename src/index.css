@@ -75,6 +75,8 @@
 
   .text-gradient-copper {
     @apply bg-clip-text text-transparent bg-gradient-to-br from-cream-light via-copper to-copper-light;
+    background-size: 200% auto;
+    animation: textShine 8s ease-in-out infinite alternate;
   }
 
   @keyframes textShine {
