@@ -21,15 +21,15 @@ import { useState, ReactNode, useEffect } from "react";
 
 const Logo = ({ className = "", onClick, light = false }: { className?: string; onClick?: () => void; light?: boolean }) => (
   <motion.button 
-    whileHover={{ scale: 1.01 }}
+    whileHover={{ scale: 1.02, y: -1 }}
     onClick={onClick}
-    className={`flex flex-col items-center ${className} ${onClick ? 'cursor-pointer' : ''} text-center border-none bg-transparent p-0 outline-none group`}
+    className={`flex items-center space-x-2 md:space-x-2.5 ${className} ${onClick ? 'cursor-pointer' : ''} text-left border-none bg-transparent p-0 outline-none group`}
   >
-    <div className="flex flex-col items-center leading-none relative">
-      <span className={`${light ? 'text-cream' : 'text-navy'} font-serif font-bold text-4xl tracking-tight transition-colors drop-shadow-[0_1px_1px_rgba(235,221,203,0.2)]`}>
+    <div className="flex flex-col justify-center pt-0.5">
+      <span className={`${light ? 'text-cream' : 'text-navy'} font-serif font-bold text-2xl md:text-3xl tracking-tight transition-colors leading-[1.1]`}>
         RVNA
       </span>
-      <span className={`${light ? 'text-cream/40' : 'text-navy/60'} font-sans font-bold text-[9px] uppercase tracking-[0.6em] mt-1 transition-colors`}>
+      <span className={`${light ? 'text-cream/60' : 'text-navy/60'} font-sans font-bold text-[8.5px] md:text-[9.5px] uppercase tracking-[0.35em] md:tracking-[0.45em] transition-colors mt-0.5`}>
         Intelligence
       </span>
     </div>
@@ -80,7 +80,7 @@ const Section = ({ children, className = "", id = "", dark = false, muted = fals
     className={`py-40 px-6 md:px-12 lg:px-24 ${dark ? 'bg-navy text-cream' : muted ? 'bg-cream-muted text-navy' : 'bg-cream text-navy'} ${className} relative overflow-hidden`}
   >
     {!dark && <div className="absolute inset-0 bg-grain pointer-events-none opacity-100" />}
-    {!dark && <div className="absolute inset-0 bg-grid pointer-events-none" />}
+    {!dark && <div className="absolute inset-0 bg-network pointer-events-none" />}
     <div className="max-w-7xl mx-auto relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -121,8 +121,8 @@ export default function App() {
   return (
     <div className="min-h-screen selection:bg-navy selection:text-cream">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? 'bg-cream/80 backdrop-blur-xl border-b border-navy/5 py-4 shadow-premium' : 'bg-transparent py-10'}`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between">
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? 'bg-cream/90 backdrop-blur-xl border-b border-navy/5 py-4 shadow-premium' : 'bg-transparent py-10'}`}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-12 xl:px-8 flex items-center justify-between">
           <Logo onClick={scrollToTop} />
           
           {/* Desktop Navigation */}
