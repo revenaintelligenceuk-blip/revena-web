@@ -33,12 +33,11 @@ export const Footer = () => {
             <span className="text-cream/20 mb-2">Legal</span>
             <a href="#privacy" className="hover:text-copper transition-colors">Privacy Policy</a>
             <a href="#terms" className="hover:text-copper transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-copper transition-colors">Confidentiality</a>
+            <a href="#confidentiality" className="hover:text-copper transition-colors">Confidentiality</a>
           </div>
           <div className="flex flex-col space-y-4">
             <span className="text-cream/20 mb-2">Contact</span>
             <span className="text-cream/60">London, UK</span>
-            <a href="mailto:revenaintelligence.uk@gmail.com" className="hover:text-copper transition-colors lowercase tracking-normal">hello@rvna.co.uk</a>
           </div>
         </div>
       </div>

@@ -19,6 +19,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Terms from "./components/Terms";
 import Privacy from "./components/Privacy";
+import Confidentiality from "./components/Confidentiality";
 import { useState, useEffect } from "react";
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
 
   if (currentPath === "#terms") return <Terms />;
   if (currentPath === "#privacy") return <Privacy />;
+  if (currentPath === "#confidentiality") return <Confidentiality />;
 
   return (
     <div className="min-h-screen selection:bg-navy selection:text-cream">
