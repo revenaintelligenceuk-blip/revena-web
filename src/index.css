@@ -1,19 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
+:root {
+  --theme-cream: #EBDDCB;
+  --theme-cream-muted: #D9CBB7;
+  --theme-cream-light: #F5EFE6;
+  --theme-navy: #0B1F3B;
+  --theme-navy-muted: rgba(11, 31, 59, 0.85);
+  --theme-ink: #051020;
+  --theme-grey-body: #1A2B3C;
+  --theme-copper: #A67C52;
+  --theme-copper-light: #C49B72;
+}
+
+:root.dark {
+  --theme-cream: #051020; /* Very dark background */
+  --theme-cream-muted: #0a1428; /* Slightly lighter dark background */
+  --theme-cream-light: rgba(255, 255, 255, 0.03); /* Subtle overlays */
+  --theme-navy: #F5EFE6; /* Light cream text */
+  --theme-navy-muted: rgba(245, 239, 230, 0.7); /* Muted light text */
+  --theme-ink: #EBDDCB;
+  --theme-grey-body: #D9CBB7; /* Readable body text */
+  --theme-copper: #C49B72; /* Keep accent bright */
+  --theme-copper-light: #A67C52;
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
   
-  --color-cream: #EBDDCB; /* Warm Beige */
-  --color-cream-muted: #D9CBB7;
-  --color-cream-light: #F5EFE6;
-  --color-navy: #0B1F3B; /* Original Deep Navy */
-  --color-navy-muted: rgba(11, 31, 59, 0.85);
-  --color-ink: #051020;
-  --color-grey-body: #1A2B3C; /* Original blue-grey */
-  --color-copper: #A67C52;
-  --color-copper-light: #C49B72;
+  --color-cream: var(--theme-cream);
+  --color-cream-muted: var(--theme-cream-muted);
+  --color-cream-light: var(--theme-cream-light);
+  --color-navy: var(--theme-navy);
+  --color-navy-muted: var(--theme-navy-muted);
+  --color-ink: var(--theme-ink);
+  --color-grey-body: var(--theme-grey-body);
+  --color-copper: var(--theme-copper);
+  --color-copper-light: var(--theme-copper-light);
 }
 
 @layer base {

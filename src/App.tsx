@@ -1,201 +1,41 @@
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { 
   ArrowRight, 
-  CheckCircle2, 
-  Menu,
-  X,
   TrendingUp,
-  BarChart3,
   ShieldCheck,
   Target,
   Clock,
   PhoneMissed,
-  Zap,
   ArrowDownRight,
   Search,
-  Mail,
-  Calendar,
-  MessageSquare
 } from "lucide-react";
-import { useState, ReactNode, useEffect } from "react";
 
-const Logo = ({ className = "", onClick, light = false }: { className?: string; onClick?: () => void; light?: boolean }) => (
-  <motion.button 
-    whileHover={{ scale: 1.02, y: -1 }}
-    onClick={onClick}
-    className={`flex items-center space-x-2 md:space-x-2.5 ${className} ${onClick ? 'cursor-pointer' : ''} text-left border-none bg-transparent p-0 outline-none group`}
-  >
-    <div className="flex flex-col justify-center pt-0.5">
-      <span className={`${light ? 'text-cream' : 'text-navy'} font-serif font-bold text-2xl md:text-3xl tracking-tight transition-colors leading-[1.1]`}>
-        RVNA
-      </span>
-      <span className={`${light ? 'text-cream/60' : 'text-navy/60'} font-sans font-bold text-[8.5px] md:text-[9.5px] uppercase tracking-[0.35em] md:tracking-[0.45em] transition-colors mt-0.5`}>
-        Intelligence
-      </span>
-    </div>
-  </motion.button>
-);
-
-const Button = ({ 
-  children, 
-  variant = "primary", 
-  className = "",
-  onClick
-}: { 
-  children: ReactNode; 
-  variant?: "primary" | "outline" | "light"; 
-  className?: string;
-  onClick?: () => void;
-}) => {
-  const variants = {
-    primary: "bg-navy text-cream hover:bg-navy-muted border border-navy shadow-premium",
-    outline: "bg-transparent border border-navy/20 text-navy hover:bg-navy hover:text-cream hover:border-navy",
-    light: "bg-cream text-navy hover:bg-cream-light border border-cream shadow-premium"
-  };
-
-  return (
-    <motion.button 
-      whileHover={{ y: -2, boxShadow: "0 20px 40px -10px rgba(10, 26, 47, 0.15)" }}
-      whileTap={{ scale: 0.98 }}
-      onClick={onClick}
-      className={`px-10 py-4 font-sans font-bold text-[10px] uppercase tracking-[0.2em] transition-all duration-500 ${variants[variant]} ${className} cursor-pointer relative overflow-hidden group`}
-    >
-      <span className="relative z-10">{children}</span>
-      {variant === "primary" && (
-        <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-cream-light/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-        />
-      )}
-    </motion.button>
-  );
-};
-
-const Section = ({ children, className = "", id = "", dark = false, muted = false }: { children: ReactNode; className?: string; id?: string; dark?: boolean; muted?: boolean }) => (
-  <motion.section 
-    id={id} 
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 1 }}
-    className={`py-40 px-6 md:px-12 lg:px-24 ${dark ? 'bg-navy text-cream' : muted ? 'bg-cream-muted text-navy' : 'bg-cream text-navy'} ${className} relative overflow-hidden`}
-  >
-    {!dark && <div className="absolute inset-0 bg-grain pointer-events-none opacity-100" />}
-    {!dark && <div className="absolute inset-0 bg-network pointer-events-none" />}
-    <div className="max-w-7xl mx-auto relative z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
-      >
-        {children}
-      </motion.div>
-    </div>
-  </motion.section>
-);
+import Logo from "./components/Logo";
+import Button from "./components/Button";
+import Section from "./components/Section";
+import Header from "./components/Header";
+import FAQ from "./components/FAQ";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import Terms from "./components/Terms";
+import Privacy from "./components/Privacy";
+import { useState, useEffect } from "react";
 
 export default function App() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.hash);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onHashChange = () => setCurrentPath(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get('name');
-    alert(`Thank you, ${name}. Your request for a Discovery Call has been received. We will contact you shortly.`);
-    e.currentTarget.reset();
-  };
+  if (currentPath === "#terms") return <Terms />;
+  if (currentPath === "#privacy") return <Privacy />;
 
   return (
     <div className="min-h-screen selection:bg-navy selection:text-cream">
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? 'bg-cream/90 backdrop-blur-xl border-b border-navy/5 py-4 shadow-premium' : 'bg-transparent py-10'}`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-12 xl:px-8 flex items-center justify-between">
-          <Logo onClick={scrollToTop} />
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-16">
-            {[
-              { label: 'The Problem', href: '#problem' },
-              { label: 'Framework', href: '#framework' },
-              { label: 'Impact', href: '#impact' },
-              { label: 'Audit', href: '#audit' },
-              { label: 'Contact', href: '#contact' }
-            ].map((item) => (
-              <a 
-                key={item.label}
-                href={item.href} 
-                className="group relative text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-navy/50 hover:text-navy transition-all duration-300"
-              >
-                {item.label}
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-copper transition-all duration-500 group-hover:w-full" />
-              </a>
-            ))}
-            <a href="#contact">
-              <Button 
-                variant="outline" 
-                className="py-3 px-10 border-navy/10"
-              >
-                Book Discovery Call
-              </Button>
-            </a>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden text-navy p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation Overlay */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-cream border-b border-navy/5 overflow-hidden"
-            >
-              <div className="px-6 py-12 flex flex-col space-y-8">
-                {[
-                  { label: 'The Problem', href: '#problem' },
-                  { label: 'Framework', href: '#framework' },
-                  { label: 'Impact', href: '#impact' },
-                  { label: 'Audit', href: '#audit' },
-                  { label: 'Contact', href: '#contact' }
-                ].map((item) => (
-                  <a 
-                    key={item.label}
-                    href={item.href} 
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-sm font-sans font-bold uppercase tracking-[0.3em] text-navy/60 hover:text-navy transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <a href="#contact" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="primary" className="w-full">Book Discovery Call</Button>
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+      <Header />
 
       <main>
         {/* Hero Section */}
@@ -714,127 +554,11 @@ export default function App() {
           </div>
         </Section>
 
-        {/* Contact Section */}
-        <Section id="contact" muted className="border-t border-premium">
-          <div className="grid lg:grid-cols-2 gap-32">
-            <div className="space-y-12">
-              <div className="space-y-6">
-                <div className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-navy/30">Get in Touch</div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight">
-                  Book Your <br /> <span className="italic font-normal text-gradient">Discovery Call.</span>
-                </h2>
-              </div>
-              <p className="text-xl text-grey-body leading-relaxed font-sans font-light">
-                Secure a confidential consultation to discuss your operational infrastructure and revenue recovery potential.
-              </p>
-              
-              <div className="space-y-10 pt-8">
-                <div className="flex items-center space-x-6">
-                  <div className="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center">
-                    <Calendar className="w-5 h-5 text-navy/40" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-sans font-bold uppercase tracking-widest text-navy/30 mb-1">Availability</div>
-                    <span className="text-lg font-serif font-bold text-navy">Mon – Fri, 9am – 6pm GMT</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-cream p-12 md:p-16 border border-premium shadow-premium relative overflow-hidden">
-              <div className="absolute inset-0 bg-grain opacity-5 pointer-events-none" />
-              <form className="space-y-8 relative z-10" onSubmit={handleContactSubmit}>
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-navy/30">Full Name</label>
-                    <input 
-                      name="name"
-                      type="text" 
-                      required 
-                      className="w-full bg-cream-light/50 border border-navy/10 px-6 py-4 focus:border-copper/40 outline-none transition-all duration-500 font-sans text-base" 
-                      placeholder="Your full name" 
-                    />
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-navy/30">Business Email</label>
-                    <input 
-                      name="email"
-                      type="email" 
-                      required 
-                      className="w-full bg-cream-light/50 border border-navy/10 px-6 py-4 focus:border-copper/40 outline-none transition-all duration-500 font-sans text-base" 
-                      placeholder="your@email.com" 
-                    />
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-navy/30">Company Name</label>
-                  <input 
-                    name="company"
-                    type="text" 
-                    required 
-                    className="w-full bg-cream-light/50 border border-navy/10 px-6 py-4 focus:border-copper/40 outline-none transition-all duration-500 font-sans text-base" 
-                    placeholder="Your business name" 
-                  />
-                </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-navy/30">Message (Optional)</label>
-                  <textarea 
-                    name="message"
-                    rows={4}
-                    className="w-full bg-cream-light/50 border border-navy/10 px-6 py-4 focus:border-copper/40 outline-none transition-all duration-500 font-sans text-base resize-none" 
-                    placeholder="Tell us about your current operations..." 
-                  />
-                </div>
-                <Button variant="primary" className="w-full py-6 text-base">
-                  Request Discovery Call
-                </Button>
-                <p className="text-[9px] text-center text-navy/20 uppercase tracking-[0.4em] font-bold">
-                  Strict confidentiality guaranteed.
-                </p>
-              </form>
-            </div>
-          </div>
-        </Section>
+        <FAQ />
+        <Contact />
       </main>
 
-      {/* Footer */}
-      <footer className="py-32 px-6 md:px-12 lg:px-24 bg-navy text-cream relative overflow-hidden">
-        <div className="absolute inset-0 bg-grain opacity-5 pointer-events-none" />
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-16 md:space-y-0 relative z-10">
-          <div className="space-y-6">
-            <Logo className="scale-110 origin-left" onClick={scrollToTop} light />
-            <p className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-cream/20 max-w-xs leading-relaxed">Strategic Revenue Recovery for UK Service Businesses.</p>
-          </div>
-          <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-20 text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-cream/30">
-            <div className="flex flex-col space-y-4">
-              <span className="text-cream/10 mb-2">Navigation</span>
-              <a href="#problem" className="hover:text-copper transition-colors">The Problem</a>
-              <a href="#framework" className="hover:text-copper transition-colors">Framework</a>
-              <a href="#impact" className="hover:text-copper transition-colors">Impact</a>
-              <a href="#audit" className="hover:text-copper transition-colors">Audit</a>
-              <a href="#contact" className="hover:text-copper transition-colors">Contact</a>
-            </div>
-            <div className="flex flex-col space-y-4">
-              <span className="text-cream/10 mb-2">Legal</span>
-              <a href="#" className="hover:text-copper transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-copper transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-copper transition-colors">Confidentiality</a>
-            </div>
-            <div className="flex flex-col space-y-4">
-              <span className="text-cream/10 mb-2">Contact</span>
-              <span className="text-cream/60">London, UK</span>
-            </div>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto pt-24 mt-24 border-t border-cream-light/5 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 relative z-10">
-          <p className="text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-cream/10">© 2025 RVNA Intelligence. All Rights Reserved.</p>
-          <div className="flex items-center space-x-8 text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-cream/10">
-            <span>Strategic Advisory</span>
-            <div className="w-1 h-1 bg-cream-light/5 rounded-full" />
-            <span>Operational Excellence</span>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

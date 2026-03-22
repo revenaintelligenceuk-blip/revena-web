@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Mail, MessageSquare, Send, User, Building, Phone } from 'lucide-react';
 
+import { supabase } from '../src/lib/supabase';
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,6 +15,7 @@ const Contact: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const whatsappNumber = "+447398269730";
   const email = "revenaintelligence.uk@gmail.com";
@@ -23,17 +26,40 @@ const Contact: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
-    // Simulate Supabase submission delay until the user gives us their keys!
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .insert([
+          { 
+            name: formData.name, 
+            email: formData.email, 
+            phone: formData.phone || null, 
+            company: formData.company || null, 
+            message: formData.message 
+          }
+        ]);
+
+      if (error) throw error;
+
       setIsSuccess(true);
       setFormData({ name: '', email: '', phone: '', company: '', message: '' });
       setTimeout(() => setIsSuccess(false), 5000);
-    }, 1500);
+    } catch (err: any) {
+      console.error('Error submitting form:', err);
+      // Helpful error message for the user if the table doesn't exist yet
+      if (err.code === '42P01') {
+         setSubmitError("The 'contacts' table doesn't exist in Supabase yet. Please create it.");
+      } else {
+         setSubmitError(err.message || 'Something went wrong. Please try again.');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -169,6 +195,12 @@ const Contact: React.FC = () => {
                   className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all font-medium resize-none"
                 />
               </div>
+
+              {submitError && (
+                <div className="text-red-400 text-sm font-medium bg-red-400/10 border border-red-400/20 rounded-xl p-3">
+                  {submitError}
+                </div>
+              )}
 
               <button 
                 type="submit" 
