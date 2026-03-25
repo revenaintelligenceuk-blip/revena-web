@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --theme-cream: #EBDDCB;
@@ -25,20 +27,7 @@
   --theme-copper-light: #A67C52;
 }
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", serif;
-  
-  --color-cream: var(--theme-cream);
-  --color-cream-muted: var(--theme-cream-muted);
-  --color-cream-light: var(--theme-cream-light);
-  --color-navy: var(--theme-navy);
-  --color-navy-muted: var(--theme-navy-muted);
-  --color-ink: var(--theme-ink);
-  --color-grey-body: var(--theme-grey-body);
-  --color-copper: var(--theme-copper);
-  --color-copper-light: var(--theme-copper-light);
-}
+
 
 @layer base {
   body {
