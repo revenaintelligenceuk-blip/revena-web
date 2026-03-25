@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "motion/react";
 import { ReactNode } from "react";
 
@@ -10,10 +9,8 @@ export const Section = ({ children, className = "", id = "", dark = false, muted
     whileInView={{ opacity: 1 }}
     viewport={{ once: true, margin: "-100px" }}
     transition={{ duration: 1.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-    className={`py-40 px-6 md:px-12 lg:px-24 ${dark ? 'bg-navy text-cream' : muted ? 'bg-cream-muted text-navy' : 'bg-cream text-navy'} ${className} relative overflow-hidden`}
+    className={`py-40 px-6 md:px-12 lg:px-24 ${dark ? 'bg-navy text-cream' : 'bg-cream text-navy'} ${className} relative overflow-hidden`}
   >
-    {!dark && <div className="absolute inset-0 bg-grain pointer-events-none opacity-100" />}
-    {!dark && <div className="absolute inset-0 bg-network pointer-events-none" />}
     <div className="max-w-7xl mx-auto relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -26,5 +23,4 @@ export const Section = ({ children, className = "", id = "", dark = false, muted
     </div>
   </motion.section>
 );
-
 export default Section;

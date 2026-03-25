@@ -13,7 +13,7 @@ export const Logo = ({ className = "", onClick, light = false }: { className?: s
       <span className={`${light ? 'text-cream' : 'text-navy'} font-serif font-bold text-2xl md:text-3xl tracking-tight transition-colors duration-500 leading-[1.1]`}>
         RVNA
       </span>
-      <span className={`${light ? 'text-cream/60' : 'text-navy/60'} font-sans font-bold text-[8.5px] md:text-[9.5px] uppercase tracking-[0.35em] md:tracking-[0.45em] transition-colors duration-500 group-hover:text-copper mt-0.5`}>
+      <span className={`${light ? 'text-cream/60' : 'text-navy/60'} font-sans font-bold text-[8.5px] md:text-[9.5px] uppercase tracking-[0.35em] md:tracking-[0.45em] transition-colors duration-500 group-hover:text-gold mt-0.5`}>
         Intelligence
       </span>
     </div>

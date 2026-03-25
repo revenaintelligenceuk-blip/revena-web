@@ -6,27 +6,12 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        cream: {
-          DEFAULT: "var(--theme-cream)",
-          muted: "var(--theme-cream-muted)",
-          light: "var(--theme-cream-light)",
-        },
-        navy: {
-          DEFAULT: "var(--theme-navy)",
-          muted: "var(--theme-navy-muted)",
-        },
-        ink: "var(--theme-ink)",
-        grey: {
-          body: "var(--theme-grey-body)",
-        },
-        copper: {
-          DEFAULT: "var(--theme-copper)",
-          light: "var(--theme-copper-light)",
-        },
+        cream: "#F5F1E8",
+        navy: "#0E1F3D",
+        gold: "#C9A96E"
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
