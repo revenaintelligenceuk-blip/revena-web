@@ -196,19 +196,23 @@ export default function Home() {
           
           {/* Right Floating Card */}
           <div className="relative">
-            <div className="bg-navy border border-cream/20 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center p-16 text-center">
-              <div className="w-24 h-24 rounded-full border border-cream/20 flex items-center justify-center mx-auto mb-10">
-                <ShieldCheck className="w-10 h-10 text-gold" />
+            <div className="bg-navy border border-gold/20 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center p-16 text-center rounded-sm">
+              <div className="w-20 h-20 rounded-full bg-cream/5 flex items-center justify-center mx-auto mb-10 border border-gold/20">
+                <ShieldCheck className="w-8 h-8 text-gold" />
               </div>
-              <div className="space-y-6">
-                <h3 className="text-4xl font-serif font-bold tracking-tight text-cream leading-tight">
-                  The <span className="italic font-normal text-gold">RVNA Standard</span>
+              <div className="space-y-4">
+                <div className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-cream/50">The</div>
+                <h3 className="text-4xl md:text-5xl font-serif italic tracking-tight text-gold leading-tight">
+                  RVNA Standard
                 </h3>
-                <p className="text-base text-cream/70 font-sans font-normal leading-relaxed">We don't just build systems; we build the infrastructure for your next phase of growth.</p>
+                <div className="h-px w-12 bg-gold/30 mx-auto my-6" />
+                <p className="text-sm text-cream/70 font-sans font-normal leading-relaxed max-w-xs mx-auto">
+                  We don't just build systems; we build the infrastructure for your next phase of growth.
+                </p>
               </div>
-              <div className="mt-12">
-                <a href="#contact">
-                  <Button variant="light">Book Discovery Call</Button>
+              <div className="mt-12 w-full sm:w-auto">
+                <a href="#contact" className="block">
+                  <Button variant="light" className="w-full">Book Discovery Call</Button>
                 </a>
               </div>
             </div>
