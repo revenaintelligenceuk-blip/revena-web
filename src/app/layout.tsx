@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ThemeProvider from '@/components/ThemeProvider'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://revena.ai'),
@@ -44,29 +45,31 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="min-h-screen selection:bg-navy selection:text-cream bg-cream text-navy antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "RVNA Intelligence",
-              "url": "https://revena.ai",
-              "logo": "https://revena.ai/favicon.png",
-              "description": "Strategic revenue recovery and operational infrastructure for high-growth UK service businesses.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "London",
-                "addressCountry": "UK"
-              },
-              "priceRange": "$$$"
-            })
-          }}
-        />
-        <Header />
-        {children}
-        <Footer />
+      <body className="min-h-screen antialiased">
+        <ThemeProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+               __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ProfessionalService",
+                "name": "RVNA Intelligence",
+                "url": "https://revena.ai",
+                "logo": "https://revena.ai/favicon.png",
+                "description": "Strategic revenue recovery and operational infrastructure for high-growth UK service businesses.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "London",
+                  "addressCountry": "UK"
+                },
+                "priceRange": "$$$"
+              })
+            }}
+          />
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

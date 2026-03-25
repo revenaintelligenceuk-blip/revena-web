@@ -18,10 +18,10 @@ export const Button = ({
   disabled?: boolean;
 }) => {
   const variants = {
-    primary: "bg-navy text-cream hover:opacity-90",
-    outline: "bg-transparent border border-navy/20 text-navy hover:bg-navy hover:text-cream",
-    light: "bg-cream text-navy hover:opacity-90",
-    ghost: "bg-transparent text-navy hover:bg-navy/5"
+    primary: "bg-navy dark:bg-cream text-cream dark:text-navy hover:opacity-90",
+    outline: "bg-transparent border border-navy/20 dark:border-cream/20 text-navy dark:text-cream hover:bg-navy dark:hover:bg-cream hover:text-cream dark:hover:text-navy",
+    light: "bg-cream dark:bg-navy text-navy dark:text-cream border border-cream/20 dark:border-navy/20 hover:opacity-90",
+    ghost: "bg-transparent text-navy dark:text-cream hover:bg-navy/5 dark:hover:bg-cream/5"
   };
 
   return (

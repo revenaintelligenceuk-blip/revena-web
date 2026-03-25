@@ -5,15 +5,15 @@
 
 @layer base {
   body {
-    @apply bg-cream text-navy font-sans antialiased;
+    @apply bg-cream dark:bg-navy text-navy dark:text-cream font-sans antialiased transition-colors duration-500;
   }
   
   h1, h2, h3, h4 {
-    @apply font-serif text-navy tracking-tight;
+    @apply font-serif text-navy dark:text-cream tracking-tight;
   }
 
   ::selection {
-    @apply bg-navy text-cream;
+    @apply bg-navy dark:bg-cream text-cream dark:text-navy;
   }
 }
 

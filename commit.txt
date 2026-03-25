@@ -1,0 +1,19 @@
+﻿commit bc79223501ec0630f7314a8685a12fbe58e92171
+Author: Raffa <revenaintelligence.uk@gmail.com>
+Date:   Wed Mar 25 22:54:48 2026 +0000
+
+    Fix Google favicon
+
+A	src/app/apple-icon.png
+M	src/app/globals.css
+A	src/app/icon.png
+M	src/app/layout.tsx
+M	src/app/page.tsx
+M	src/components/Button.tsx
+M	src/components/Contact.tsx
+M	src/components/FAQ.tsx
+M	src/components/Footer.tsx
+M	src/components/Header.tsx
+M	src/components/Logo.tsx
+M	src/components/Section.tsx
+M	tailwind.config.ts
