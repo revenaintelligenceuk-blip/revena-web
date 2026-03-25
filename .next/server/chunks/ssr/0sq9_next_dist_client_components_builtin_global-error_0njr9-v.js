@@ -1,0 +1,3 @@
+module.exports=[35417,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(85250);a.n(d("[project]/Downloads/revena-intelligence (2)/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},10544,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(85250);a.n(d("[project]/Downloads/revena-intelligence (2)/node_modules/next/dist/client/components/builtin/global-error.js"))},16343,a=>{"use strict";a.i(35417);var b=a.i(10544);a.n(b)},75575,a=>{a.n(a.i(16343))}];
+
+//# sourceMappingURL=0sq9_next_dist_client_components_builtin_global-error_0njr9-v.js.map

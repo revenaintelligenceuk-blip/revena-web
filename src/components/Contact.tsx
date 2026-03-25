@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Send, ShieldCheck, Lock } from 'lucide-react';
 import { supabase } from '../lib/supabase';

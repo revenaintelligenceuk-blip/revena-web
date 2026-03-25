@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/privacy/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0ujjk95._.js")
+R.c("server/chunks/ssr/0sq9_next_dist_esm_build_templates_app-page_02yct5f.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0w2-3-d._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0tyusmh._.js")
+R.c("server/chunks/ssr/Downloads_revena-intelligence (2)_src_0is~63i._.js")
+R.c("server/chunks/ssr/0sq9_next_dist_client_components_0zcm_xf._.js")
+R.c("server/chunks/ssr/0sq9_next_dist_client_components_builtin_forbidden_07ypt5q.js")
+R.c("server/chunks/ssr/0sq9_next_dist_client_components_builtin_unauthorized_0y0fmn_.js")
+R.c("server/chunks/ssr/0sq9_next_dist_client_components_builtin_global-error_0njr9-v.js")
+R.c("server/chunks/ssr/0ipn_revena-intelligence (2)__next-internal_server_app_privacy_page_actions_121_lh5.js")
+R.m(40584)
+module.exports=R.m(40584).exports

@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 
 export const Logo = ({ className = "", onClick, light = false }: { className?: string; onClick?: () => void; light?: boolean }) => (

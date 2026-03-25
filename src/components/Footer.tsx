@@ -1,4 +1,7 @@
+"use client";
+
 import Logo from "./Logo";
+import Link from "next/link";
 
 export const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -22,18 +25,18 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-20 text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-cream/50">
           <div className="flex flex-col space-y-4">
             <span className="text-cream/20 mb-2">Navigation</span>
-            <a href="#problem" className="hover:text-copper transition-colors">The Problem</a>
-            <a href="#framework" className="hover:text-copper transition-colors">Framework</a>
-            <a href="#impact" className="hover:text-copper transition-colors">Impact</a>
-            <a href="#audit" className="hover:text-copper transition-colors">Audit</a>
-            <a href="#faq" className="hover:text-copper transition-colors">FAQ</a>
-            <a href="#contact" className="hover:text-copper transition-colors">Contact</a>
+            <a href="/#problem" className="hover:text-copper transition-colors">The Problem</a>
+            <a href="/#framework" className="hover:text-copper transition-colors">Framework</a>
+            <a href="/#impact" className="hover:text-copper transition-colors">Impact</a>
+            <a href="/#audit" className="hover:text-copper transition-colors">Audit</a>
+            <a href="/#faq" className="hover:text-copper transition-colors">FAQ</a>
+            <a href="/#contact" className="hover:text-copper transition-colors">Contact</a>
           </div>
           <div className="flex flex-col space-y-4">
             <span className="text-cream/20 mb-2">Legal</span>
-            <a href="#privacy" className="hover:text-copper transition-colors">Privacy Policy</a>
-            <a href="#terms" className="hover:text-copper transition-colors">Terms of Service</a>
-            <a href="#confidentiality" className="hover:text-copper transition-colors">Confidentiality</a>
+            <Link href="/privacy" className="hover:text-copper transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-copper transition-colors">Terms of Service</Link>
+            <Link href="/confidentiality" className="hover:text-copper transition-colors">Confidentiality</Link>
           </div>
           <div className="flex flex-col space-y-4">
             <span className="text-cream/20 mb-2">Contact</span>
