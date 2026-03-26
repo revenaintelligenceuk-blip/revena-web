@@ -1,36 +1,34 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import ThemeProvider from '@/components/ThemeProvider'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://revena.ai'),
-  title: 'RVNA Intelligence | Strategic Revenue Recovery for UK Service Businesses',
-  description: 'RVNA Intelligence helps UK service businesses eliminate 20-45% revenue leakage through the RVNA Framework. Elite strategic advisory and operational infrastructure.',
-  keywords: 'Strategic Revenue Recovery, Revenue Leakage UK, Operational Infrastructure, RVNA Framework, Business Growth Advisory, UK Service Business Automation, Lead Capture Systems',
+  title: 'RVNA Intelligence | Eliminate Revenue Leakage | Strategic Advisory',
+  description: 'RVNA Intelligence builds intelligent systems to recover lost revenue for UK service businesses. Eliminate missed calls, slow responses, and broken follow-up.',
+  keywords: 'Revenue Recovery, AI Lead Capture, Strategic Advisory, Clinic Automation, Business Intelligence UK, RVNA Intelligence',
   authors: [{ name: 'RVNA Intelligence' }],
   robots: 'index, follow',
   openGraph: {
     type: 'website',
     url: 'https://revena.ai/',
     title: 'RVNA Intelligence | Strategic Revenue Recovery',
-    description: 'Eliminate revenue leakage. Strategic advisory and operational infrastructure for high-growth UK service businesses.',
+    description: 'Recover 20-45% of inbound revenue with automated capture and conversion systems.',
     images: [{ url: 'https://revena.ai/og-image.jpg' }],
+    locale: 'en_GB',
+    siteName: 'RVNA Intelligence',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'RVNA Intelligence | Strategic Revenue Recovery',
-    description: 'Eliminate revenue leakage through the RVNA Framework and intelligent operational infrastructure.',
+    description: 'Eliminate revenue leakage with bespoke AI ecosystems.',
     images: ['https://revena.ai/og-image.jpg'],
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#F5F1E8' },
-    { media: '(prefers-color-scheme: dark)', color: '#0E1F3D' },
-  ],
+  themeColor: '#EBDDCB', // Updated to Cream
   width: 'device-width',
   initialScale: 1,
 }
@@ -45,31 +43,10 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="min-h-screen antialiased">
-        <ThemeProvider>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-               __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "ProfessionalService",
-                "name": "RVNA Intelligence",
-                "url": "https://revena.ai",
-                "logo": "https://revena.ai/favicon.png",
-                "description": "Strategic revenue recovery and operational infrastructure for high-growth UK service businesses.",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "London",
-                  "addressCountry": "UK"
-                },
-                "priceRange": "$$$"
-              })
-            }}
-          />
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
+      <body className="min-h-screen antialiased bg-cream">
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   )

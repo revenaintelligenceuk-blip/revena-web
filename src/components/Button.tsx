@@ -1,39 +1,41 @@
-"use client";
-import { motion } from "motion/react";
-import { ReactNode } from "react";
+'use client';
 
-export const Button = ({ 
+import { ReactNode } from "react";
+import { motion } from "motion/react";
+
+const Button = ({ 
   children, 
   variant = "primary", 
   className = "",
   onClick,
-  type = "button",
-  disabled = false
+  type = "button"
 }: { 
   children: ReactNode; 
-  variant?: "primary" | "outline" | "light" | "ghost"; 
+  variant?: "primary" | "outline" | "light"; 
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
-  disabled?: boolean;
 }) => {
   const variants = {
-    primary: "bg-navy dark:bg-cream text-cream dark:text-navy hover:opacity-90",
-    outline: "bg-transparent border border-navy/20 dark:border-cream/20 text-navy dark:text-cream hover:bg-navy dark:hover:bg-cream hover:text-cream dark:hover:text-navy",
-    light: "bg-cream dark:bg-navy text-navy dark:text-cream border border-cream/20 dark:border-navy/20 hover:opacity-90",
-    ghost: "bg-transparent text-navy dark:text-cream hover:bg-navy/5 dark:hover:bg-cream/5"
+    primary: "bg-navy text-cream hover:bg-navy-muted border border-navy shadow-premium",
+    outline: "bg-transparent border border-navy/20 text-navy hover:bg-navy hover:text-cream hover:border-navy",
+    light: "bg-cream text-navy hover:bg-cream-light border border-cream shadow-premium"
   };
 
   return (
     <motion.button 
       type={type}
-      disabled={disabled}
-      whileHover={{ y: -2 }}
+      whileHover={{ y: -2, boxShadow: "0 20px 40px -10px rgba(1, 23, 45, 0.15)" }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className={`px-10 py-4 font-sans font-bold text-[10px] uppercase tracking-[0.2em] transition-all duration-500 ${variants[variant]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'} relative overflow-hidden group`}
+      className={`px-10 py-4 font-sans font-bold text-[10px] uppercase tracking-[0.2em] transition-all duration-500 ${variants[variant]} ${className} cursor-pointer relative overflow-hidden group`}
     >
       <span className="relative z-10">{children}</span>
+      {variant === "primary" && (
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-cream-light/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+        />
+      )}
     </motion.button>
   );
 };
