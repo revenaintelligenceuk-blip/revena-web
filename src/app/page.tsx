@@ -34,7 +34,6 @@ export default function Home() {
               "addressCountry": "GB"
             },
             "url": "https://revena.ai",
-            "telephone": "+44 20 XXXX XXXX",
             "priceRange": "£££"
           })
         }}

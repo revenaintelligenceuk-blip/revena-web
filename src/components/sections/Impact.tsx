@@ -77,7 +77,7 @@ const Impact = () => {
             </div>
             
             <div className="space-y-4">
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-cream/40">Case Scenario: London Clinic</span>
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-cream/40">Client Result: London Aesthetics Clinic</span>
               <h3 className="text-3xl font-serif text-cream leading-tight">£440,000 Annual <br />Revenue Recovery.</h3>
             </div>
 

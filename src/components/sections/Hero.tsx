@@ -1,20 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, BrainCircuit } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
 import Section from '@/components/Section';
 import Button from '@/components/Button';
 
 const Hero = () => {
-  const [isJumping, setIsJumping] = useState(false);
-
-  const handleLogoClick = () => {
-    setIsJumping(true);
-    setTimeout(() => setIsJumping(false), 800);
-  };
-
   return (
     <>
       <Section className="pt-64 pb-56 relative overflow-hidden bg-cream" noAnimation>
@@ -37,7 +29,7 @@ const Hero = () => {
               </div>
             </div>
             
-            <h1 className="text-8xl md:text-9xl font-serif font-bold tracking-tight leading-[0.9] text-navy relative">
+            <h1 className="text-5xl sm:text-7xl md:text-9xl font-serif font-bold tracking-tight leading-[0.9] text-navy relative">
               Eliminate <br />
               <span className="italic font-normal text-gradient">Revenue Leakage.</span>
               <motion.div 
@@ -69,12 +61,16 @@ const Hero = () => {
               </div>
             </div>
 
+            <div className="text-[9px] font-sans text-navy/20 tracking-wider pt-2">
+              Based on average results across active client implementations.
+            </div>
+
             <div className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-navy/30 border-t border-navy/5 pt-8">
               Trusted by clinics and service businesses across London, Manchester, Birmingham & Edinburgh.
             </div>
             
             <div className="pt-10 flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8">
-              <a href="#contact" className="w-full sm:w-auto">
+              <a href="#audit" className="w-full sm:w-auto">
                 <Button 
                   className="flex items-center group w-full justify-center"
                 >
@@ -91,18 +87,6 @@ const Hero = () => {
         </div>
       </Section>
 
-      {/* Floating Jumping Logo */}
-      <div 
-        className={cn(
-          "fixed bottom-12 right-12 z-50 cursor-pointer transition-all duration-300 hover:scale-110",
-          isJumping && "animate-logo-jump"
-        )}
-        onClick={handleLogoClick}
-      >
-        <div className="w-16 h-16 bg-white rounded-2xl shadow-2xl flex items-center justify-center border border-navy/5">
-          <BrainCircuit className="w-8 h-8 text-navy" />
-        </div>
-      </div>
     </>
   );
 };

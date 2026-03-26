@@ -27,8 +27,7 @@ const Navbar = () => {
     { label: 'The Problem', href: '#problem' },
     { label: 'Framework', href: '#framework' },
     { label: 'Impact', href: '#impact' },
-    { label: 'Audit', href: '#audit' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'Contact', href: '#audit' },
   ];
 
   return (
@@ -51,8 +50,8 @@ const Navbar = () => {
               <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-copper transition-all duration-500 group-hover:w-full" />
             </a>
           ))}
-          <a href="#contact">
-            <motion.button 
+          <a href="#audit">
+            <motion.button
               whileHover={{ y: -2, boxShadow: "0 20px 40px -10px rgba(10, 26, 47, 0.15)" }}
               whileTap={{ scale: 0.98 }}
               className="px-10 py-3 font-sans font-bold text-[10px] uppercase tracking-[0.2em] transition-all duration-500 bg-transparent border border-navy/20 text-navy hover:bg-navy hover:text-cream hover:border-navy cursor-pointer relative overflow-hidden group shadow-premium"
@@ -66,6 +65,7 @@ const Navbar = () => {
         <button 
           className="md:hidden text-navy p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -91,7 +91,7 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+              <a href="#audit" onClick={() => setIsMenuOpen(false)}>
                 <button className="w-full py-4 bg-navy text-cream font-sans font-bold text-[10px] uppercase tracking-[0.2em]">
                   Book Discovery Call
                 </button>

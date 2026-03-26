@@ -26,8 +26,7 @@ const Footer = () => {
             <a href="#problem" className="hover:text-copper transition-colors">The Problem</a>
             <a href="#framework" className="hover:text-copper transition-colors">Framework</a>
             <a href="#impact" className="hover:text-copper transition-colors">Impact</a>
-            <a href="#audit" className="hover:text-copper transition-colors">Audit</a>
-            <a href="#contact" className="hover:text-copper transition-colors">Contact</a>
+            <a href="#audit" className="hover:text-copper transition-colors">Contact</a>
           </div>
           
           <div className="flex flex-col space-y-4">

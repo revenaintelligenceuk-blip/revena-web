@@ -10,6 +10,7 @@ import Button from '@/components/Button';
 const Audit = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,6 +21,7 @@ const Audit = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
 
     try {
       const { error } = await supabase
@@ -38,7 +40,7 @@ const Audit = () => {
       setSubmitted(true);
     } catch (err) {
       console.error('Error submitting form:', err);
-      alert('Something went wrong. Please try again.');
+      setError('Something went wrong. Please try again or email advisory@revena.ai directly.');
     } finally {
       setLoading(false);
     }
@@ -146,7 +148,12 @@ const Audit = () => {
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                   />
                 </div>
-                <Button 
+                {error && (
+                  <p className="text-red-400 text-[10px] font-sans tracking-wider leading-relaxed border border-red-400/20 bg-red-400/5 px-6 py-4">
+                    {error}
+                  </p>
+                )}
+                <Button
                   type="submit"
                   variant="light"
                   className="w-full mt-4"
